@@ -1,32 +1,31 @@
-import frisby = require('frisby');
-
+"use strict";
+exports.__esModule = true;
+var frisby = require("frisby");
 frisby.create("CustomersController.Get() Test")
     .get("http://localhost:1936/api/customers/BONAP")
     .expectHeaderContains("Content-Type", "json")
     .expectJSON({
-        "CustomerID": "BONAP"
-    })
+    "CustomerID": "BONAP"
+})
     .expectJSONTypes({
-        "CustomerID": String,
-        "CompanyName": String,
-        "ContactName": String
-    })
+    "CustomerID": String,
+    "CompanyName": String,
+    "ContactName": String
+})
     .expectMaxResponseTime(500)
     .expectStatus(200)
     .toss();
-
 frisby.create("CustomersController.GetCustomersWithOrder() Test")
     .get("http://localhost:1936/api/customersWithOrder")
     .expectHeaderContains("Content-Type", "json")
     .expectJSONTypes("*", {
-        "CustomerID": String,
-        "CompanyName": String,
-        "ContactName": String
-    })
+    "CustomerID": String,
+    "CompanyName": String,
+    "ContactName": String
+})
     .expectMaxResponseTime(500)
     .expectStatus(200)
     .toss();
-
 frisby.create("CustomersController.GetCustomersCsv() Test")
     .get("http://localhost:1936/api/customersCsv")
     .expectHeader("Content-Type", "application/x-excel")
