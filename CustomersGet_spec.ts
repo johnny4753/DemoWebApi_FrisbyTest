@@ -30,7 +30,7 @@ frisby.create("CustomersController.GetCustomersWithOrder() Test")
 frisby.create("CustomersController.GetCustomersCsv() Test")
     .get("http://localhost:1936/api/customersCsv")
     .expectHeader("Content-Type", "application/x-excel")
-    .expectBodyContains("顧客ID,顧客名稱,ContactName,")
+    .expectBodyContains("顧客ID,公司名稱,ContactName,")
     .expectMaxResponseTime(500)
     .expectStatus(200)
     .toss();
