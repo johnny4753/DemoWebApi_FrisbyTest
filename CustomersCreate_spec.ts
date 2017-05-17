@@ -16,7 +16,11 @@ frisby.create("CustomersController.CreateCustomer() Test")
     })
     .expectHeaderContains("Content-Type", "json")
     .expectJSON({
-        "Message": "欄位 CustomerID 必須是最大長度為 5 的字串。"
+        "ModelState": {
+            "customer.CustomerID": [
+                "欄位 CustomerID 必須是最大長度為 5 的字串。"
+            ]
+        }
     })
     .expectStatus(400)
     .toss();
